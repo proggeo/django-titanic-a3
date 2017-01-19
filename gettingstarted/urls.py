@@ -11,6 +11,6 @@ import hello.views
 
 urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
-    url(r'^db', hello.views.db, name='db'),
+    url(r'^dataset', hello.views.titanic_json, name='dataset'),
     url(r'^admin/', include(admin.site.urls)),
 ]
