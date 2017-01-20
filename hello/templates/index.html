@@ -81,7 +81,8 @@
 
     <h2>Titanic passengers dataset visualization</h2>
 
-    <p>This visualization is created from Titanic passengers <a href="/dataset">dataset</a> using d3.js, crossfilter and dc.js. </p>
+    <p>This visualization is created from Titanic passengers <a href="/dataset">dataset</a> using d3.js, crossfilter and
+        dc.js. </p>
 
     <p>You can also filter it by age, fare and class</p>
     <div id="charts">
@@ -109,6 +110,7 @@
 <script src="{% static 'dc.js' %}"></script>
 
 <script>
+    //todo: possible improvement - use csv instead of json (for current dataset it is not substantial)
     d3.json("/dataset", function (error, passengers) {
         // removing passengers without age (age === null)
         passengers.forEach(function (pass, index) {
@@ -141,6 +143,7 @@
                 });
 
         // bar charts are implemented using barChart() function from given example: http://square.github.io/crossfilter/
+        // todo: possible improvement - use dc.js for all charts
 
         var charts = [
 
@@ -207,7 +210,6 @@
         };
 
         // barChart() function from given example: http://square.github.io/crossfilter/
-
         function barChart() {
             if (!barChart.id) barChart.id = 0;
 
