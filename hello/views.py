@@ -12,6 +12,8 @@ def index(request):
 def googlemapstrees(request):
     return render(request, 'googlemaptrees.html')
 
+def cars(request):
+    return render(request, 'cars.html')
 
 def titanic_json(request):
     module_dir = os.path.dirname(__file__)  # get current directory
@@ -27,3 +29,10 @@ def trees_json(request):
     with open(file_path) as json_file:
         json_trees = json_file.read()
     return HttpResponse(json_trees, content_type="application/json")
+
+def cars_json(request):
+    module_dir = os.path.dirname(__file__)  # get current directory
+    file_path = os.path.join(module_dir, 'static/cars_GeoCoo.json')
+    with open(file_path) as json_file:
+        json_cars = json_file.read()
+    return HttpResponse(json_cars, content_type="application/json")

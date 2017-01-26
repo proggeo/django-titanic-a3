@@ -12,7 +12,9 @@ import hello.views
 urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
     url(r'^trees$', hello.views.googlemapstrees, name='trees'),
+    url(r'^cars$', hello.views.cars, name='cars'),
     url(r'^dataset$', hello.views.titanic_json, name='dataset'),
     url(r'^trees_json$', hello.views.trees_json, name='trees_json'),
+    url(r'^cars_json$', hello.views.cars_json, name='cars_json'),
     url(r'^admin/', include(admin.site.urls)),
 ]
