@@ -15,6 +15,11 @@ def googlemapstrees(request):
 def cars(request):
     return render(request, 'cars.html')
 
+
+def carsandtrees(request):
+    return render(request, 'carsandtrees.html')
+
+
 def titanic_json(request):
     module_dir = os.path.dirname(__file__)  # get current directory
     file_path = os.path.join(module_dir, 'static/titanic_data_set.xls')
