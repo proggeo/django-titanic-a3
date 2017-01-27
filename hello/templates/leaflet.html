@@ -34,14 +34,15 @@
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 20, attribution: osmAttrib});
+    map.addLayer(osm)
 
-    {#    var OpenMapSurfer_Grayscale = L.tileLayer('http://korona.geog.uni-heidelberg.de/tiles/roadsg/x={x}&y={y}&z={z}', {#}
-    {#        maxZoom: 19,#}
-    {#        attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'#}
-    {#    });#}
+        var OpenMapSurfer_Grayscale = L.tileLayer('http://korona.geog.uni-heidelberg.de/tiles/roadsg/x={x}&y={y}&z={z}', {
+            maxZoom: 19,
+            attribution: 'Imagery from <a href="http://giscience.uni-hd.de/">GIScience Research Group @ University of Heidelberg</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
 
     map.setView(new L.LatLng(50.450779, 30.510317), 16);
-    {#    map.addLayer(OpenMapSurfer_Grayscale);#}
+    map.addLayer(OpenMapSurfer_Grayscale);
 
 
     var trees_layer = L.layerGroup([]);
@@ -91,7 +92,7 @@
                 [carsCoo[i]['b']['lat'], carsCoo[i]['b']['lon']],
                 [carsCoo[i]['c']['lat'], carsCoo[i]['c']['lon']],
                 [carsCoo[i]['d']['lat'], carsCoo[i]['d']['lon']],
-{#                [carsCoo[i]['a']['lat'], carsCoo[i]['a']['lon']]#}
+                {#                [carsCoo[i]['a']['lat'], carsCoo[i]['a']['lon']]#}
             ];
 
             current_car = L.polygon(carCoords, {
@@ -180,7 +181,8 @@
     }
 
     var baseMaps = {
-        "map": osm
+        "OSM": osm,
+        "grayscale": OpenMapSurfer_Grayscale
     }
     var overlayMaps = {
         "Trees": trees_layer,
@@ -189,7 +191,7 @@
         "Roads": roads_layer
     }
 
-{#    L.control.layers(baseMaps, overlayMaps)#}
+    L.control.layers(baseMaps, overlayMaps).addTo(map)
 
 </script>
 
