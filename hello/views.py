@@ -25,6 +25,9 @@ def carsandtrees(request):
 def houses(request):
     return render(request, 'houses.html')
 
+def united(request):
+    return render(request, 'united.html')
+
 
 def titanic_json(request):
     module_dir = os.path.dirname(__file__)  # get current directory
