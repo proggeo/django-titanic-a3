@@ -52,7 +52,6 @@
 
 
     // trees block start
-    var global_trees = [];
     var client_trees = new XMLHttpRequest();
     client_trees.open('GET', '/trees_json');
     client_trees.onreadystatechange = function () {
@@ -61,7 +60,7 @@
 
         for (var i = 0; i < treesCoo.length; i++) {
             tree = treesCoo[i];
-            global_trees [i] = L.circle([tree['lat'], tree['lon']], {
+            current_tree = L.circle([tree['lat'], tree['lon']], {
                 radius: tree['radius'],
                 color: '#91C497',
                 weight: 1,
@@ -70,7 +69,7 @@
                 fillOpacity: 0.8,
                 zIndex: 200
             });
-            trees_layer.addLayer(global_trees[i])
+            trees_layer.addLayer(current_tree)
         }
         trees_layer.addTo(map);
         redraw_all_layers()
@@ -79,7 +78,6 @@
     // trees block end
 
     // cars block start
-    var cars_global = [];
     var client_cars = new XMLHttpRequest();
     client_cars.open('GET', '/cars_json');
     client_cars.onreadystatechange = function () {
@@ -93,10 +91,10 @@
                 [carsCoo[i]['b']['lat'], carsCoo[i]['b']['lon']],
                 [carsCoo[i]['c']['lat'], carsCoo[i]['c']['lon']],
                 [carsCoo[i]['d']['lat'], carsCoo[i]['d']['lon']],
-                [carsCoo[i]['a']['lat'], carsCoo[i]['a']['lon']]
+{#                [carsCoo[i]['a']['lat'], carsCoo[i]['a']['lon']]#}
             ];
 
-            cars_global[i] = L.polygon(carCoords, {
+            current_car = L.polygon(carCoords, {
                 color: '#242424',
                 opacity: 1,
                 weight: 1,
@@ -105,7 +103,7 @@
                 smoothFactor: 1,
                 zIndex: 200
             });
-            cars_layer.addLayer(cars_global[i])
+            cars_layer.addLayer(current_car)
         }
         cars_layer.addTo(map);
         redraw_all_layers()
@@ -114,7 +112,6 @@
     // cars block end
 
     // houses block start
-    var houses_global = [];
     var client_houses = new XMLHttpRequest();
     client_houses.open('GET', '/houses_json');
     client_houses.onreadystatechange = function () {
@@ -126,7 +123,7 @@
                 houseCoos[j] = [houses[i][j]['lat'], houses[i][j]['lng']]
             }
 
-            houses_global[i] = L.polygon(houseCoos, {
+            current_house = L.polygon(houseCoos, {
                 color: '#AAB3BE',
                 opacity: 1,
                 weight: 1,
@@ -134,7 +131,7 @@
                 fillOpacity: 0.8,
                 smoothFactor: 1
             });
-            houses_layer.addLayer(houses_global[i])
+            houses_layer.addLayer(current_house)
         }
         houses_layer.addTo(map);
         redraw_all_layers()
@@ -144,8 +141,6 @@
     // houses block end
 
     // roads block start
-
-    var roads_global = [];
     var client_roads = new XMLHttpRequest();
     client_roads.open('GET', '/roads_json');
     client_roads.onreadystatechange = function () {
@@ -156,7 +151,7 @@
             for (var j = 0; j < roads[i].length; j++) {
                 roadCoos[j] = [roads[i][j]['lat'], roads[i][j]['lng']]
             }
-            roads_global[i] = L.polygon(roadCoos, {
+            current_road = L.polygon(roadCoos, {
                 color: '#AAB3BE',
                 opacity: 0,
                 weight: 0,
@@ -164,7 +159,7 @@
                 fillOpacity: 1,
                 smoothFactor: 1,
             });
-            roads_layer.addLayer(roads_global[i])
+            roads_layer.addLayer(current_road)
         }
         roads_layer.addTo(map);
         redraw_all_layers()
@@ -194,7 +189,7 @@
         "Roads": roads_layer
     }
 
-    L.control.layers(baseMaps, overlayMaps)
+{#    L.control.layers(baseMaps, overlayMaps)#}
 
 </script>
 
