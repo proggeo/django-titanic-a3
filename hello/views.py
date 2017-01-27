@@ -28,6 +28,9 @@ def houses(request):
 def united(request):
     return render(request, 'united.html')
 
+def leaflet(request):
+    return render(request, 'leaflet.html')
+
 
 def titanic_json(request):
     module_dir = os.path.dirname(__file__)  # get current directory
