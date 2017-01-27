@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^trees_json$', hello.views.trees_json, name='trees_json'),
     url(r'^cars_json$', hello.views.cars_json, name='cars_json'),
     url(r'^houses_json$', hello.views.houses_json, name='houses_json'),
+    url(r'^roads_json$', hello.views.roads_json, name='roads_json'),
     url(r'^admin/', include(admin.site.urls)),
 ]
