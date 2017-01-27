@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Leaflet example</title>
 
+    <script>L_PREFER_CANVAS = true;</script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 </head>
@@ -25,7 +26,9 @@
 <script>
 
     // set up the map
-    map = new L.Map('mapid');
+    map = new L.Map('mapid', {
+        renderer: L.canvas()
+    });
 
     // create the tile layer with correct attribution
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -180,6 +183,18 @@
             }
         }
     }
+
+    var baseMaps = {
+        "map": osm
+    }
+    var overlayMaps = {
+        "Trees": trees_layer,
+        "Cars": cars_layer,
+        "Buildings": houses_layer,
+        "Roads": roads_layer
+    }
+
+    L.control.layers(baseMaps, overlayMaps)
 
 </script>
 
